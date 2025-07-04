@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Speed/Time/Distance Calculator</title>
+</head>
+<body>
+<h1>Speed/Time/Distance Calculator</h1>
+
+<form action="/speed-calculate" method="get">
+  <p>
+    <label>Distance (km): </label>
+    <input type="number" step="any" name="distance" th:value="${distance}">
+  </p>
+  <p>
+    <label>Time (h): </label>
+    <input type="number" step="any" name="time" th:value="${time}">
+  </p>
+  <p>
+    <label>Speed (km/h): </label>
+    <input type="number" step="any" name="speed" th:value="${speed}">
+  </p>
+  <p>
+    <label>Calculate: </label>
+    <select name="calculate" required>
+      <option value="speed">Speed</option>
+      <option value="time">Time</option>
+      <option value="distance">Distance</option>
+    </select>
+  </p>
+  <button type="submit">Calculate</button>
+</form>
+
+<div th:if="${speed != null || time != null || distance != null}">
+  <h2>Results:</h2>
+  <p th:if="${speed != null}">Speed: <span th:text="${speed}"></span> km/h</p>
+  <p th:if="${time != null}">Time: <span th:text="${time}"></span> h</p>
+  <p th:if="${distance != null}">Distance: <span th:text="${distance}"></span> km</p>
+</div>
+
+<p><a href="/">Back to Home</a></p>
+</body>
+</html>

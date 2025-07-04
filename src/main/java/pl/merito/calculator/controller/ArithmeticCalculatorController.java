@@ -8,11 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ArithmeticCalculatorController {
 
-    @GetMapping("/")
-    public String home(){
-        return "calculator";
-    }
-
     @GetMapping("/calculate")
     public String calculator(@RequestParam double a, @RequestParam double b, @RequestParam String operation, Model model) {
 
